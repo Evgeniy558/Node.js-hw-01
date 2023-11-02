@@ -2,11 +2,11 @@ const { program } = require("commander");
 const contacts = require("./contacts");
 
 program
-  .option("-a, --action [string]", "choose action", "list")
-  .option("-i, --id [string]", "user id", "A0qFklw8pf5umurxmshgo")
-  .option("-n, --name [string]", "user name", "testname12")
-  .option("-e, --email [string]", "user email", "testemail1")
-  .option("-p, --phone [string]", "user phone", "testphone1");
+  .option("-a, --action [string]", "choose action")
+  .option("-i, --id [string]", "user id")
+  .option("-n, --name [string]", "user name")
+  .option("-e, --email [string]", "user email")
+  .option("-p, --phone [string]", "user phone");
 
 const { action, id, name, email, phone } = program.parse(process.argv).opts();
 console.log(action, id, name, email, phone);
