@@ -1,5 +1,8 @@
-const { program } = require("commander");
-const contacts = require("./contacts");
+import { program } from "commander";
+import { listContacts } from "./contacts/listContacts.js";
+import { getContactsById } from "./contacts/getContactsById.js";
+import { removeContact } from "./contacts/removeContact.js";
+import { addContact } from "./contacts/addContact.js";
 
 program
   .option("-a, --action [string]", "choose action")
@@ -14,18 +17,18 @@ console.log(action, id, name, email, phone);
 function invokeAction(action, id, name, email, phone) {
   switch (action) {
     case "list":
-      contacts.listContacts().then((data) => console.table(data));
+      listContacts().then((data) => console.table(data));
       break;
     case "get":
-      contacts.getContactsById(id).then((data) => {
+      getContactsById(id).then((data) => {
         console.log(data);
       });
       break;
     case "add":
-      contacts.addContact(name, email, phone).then((data) => console.log(data));
+      addContact(name, email, phone).then((data) => console.log(data));
       break;
     case "remove":
-      contacts.removeContact(id).then((data) => console.log(data));
+      removeContact(id).then((data) => console.log(data));
       break;
     default:
       console.warn("\x1B[31m Unknown action type!");
